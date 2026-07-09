@@ -15,10 +15,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', href: '#' },
+    { name: 'Services', href: '#services' },
+    { name: 'Routes', href: '#routes' },
     { name: 'Fleet', href: '#fleet' },
-    { name: 'Itinerary', href: '#packages' },
-    { name: 'Places', href: '#routes' },
-    { name: 'Pricing', href: '#services' },
+    { name: 'Tours', href: '#packages' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <PhoneCall size={16} className="text-gray-400" />
                 <span className="text-sm font-medium">+919938136659</span>
               </a>
-              <a href="#booking" className="bg-secondary text-primary px-6 py-2.5 rounded-full font-bold hover:bg-secondary/90 transition-colors text-sm">
+              <a href="#routes" className="bg-secondary text-primary px-6 py-2.5 rounded-full font-bold hover:bg-secondary/90 transition-colors text-sm">
                 Book Now
               </a>
             </div>
@@ -98,7 +98,7 @@ const Navbar = () => {
                 <PhoneCall size={18} className="text-gray-400" />
                 <span>+919938136659</span>
               </a>
-            <a href="#booking" className="bg-secondary text-center text-primary px-6 py-3 rounded-full font-bold w-full block">
+            <a href="#routes" className="bg-secondary text-center text-primary px-6 py-3 rounded-full font-bold w-full block">
               Book Now
             </a>
           </div>

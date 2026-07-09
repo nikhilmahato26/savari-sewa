@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Utensils, Calendar, Phone, Star } from 'lucide-react';
+import { Clock, Car, Shield, Phone, Star } from 'lucide-react';
 
 
 // Custom WhatsApp SVG
@@ -32,20 +32,32 @@ const Hero = () => {
           >
             <div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-playfair leading-tight mb-4">
-                Odisha <span className="text-secondary italic">Divine</span><br/>
-                Veg Tour
+                Premium <span className="text-secondary italic">Car Rental</span><br/>
+                & Cab Services
               </h1>
               <p className="text-gray-300 font-medium mb-6 text-sm md:text-base tracking-wide flex flex-wrap items-center gap-2">
-                3 Days / 2 Nights <span className="text-secondary">•</span> Mahaprasad Included <span className="text-secondary">•</span> Every Friday Departure
+                Chauffeur Driven <span className="text-secondary">•</span> Outstation & Local <span className="text-secondary">•</span> 24/7 Availability
               </p>
-              <p className="text-gray-400 font-light max-w-lg leading-relaxed text-base md:text-lg">
-                A premium, pure-vegetarian pilgrimage through the sacred heart of Odisha — Bhubaneswar, Konark & Puri — in the comfort of luxury SUVs.
+              <p className="text-gray-400 font-light max-w-lg leading-relaxed text-base md:text-lg mb-6">
+                Experience world-class, premium, and luxury car rentals across Odisha. Travel to Bhubaneswar, Puri, Konark, and beyond in the absolute comfort of our top-tier SUVs and sedans.
               </p>
+
+              {/* Popular Routes */}
+              <div className="space-y-2">
+                <span className="text-secondary font-bold text-xs uppercase tracking-widest block">Popular Routes</span>
+                <div className="flex flex-wrap gap-2 max-w-md">
+                  {['Bbsr - Puri - Konark', 'Bbsr - Konark - Puri', 'Bbsr to Cuttack', 'Bbsr to Chilika'].map((route, idx) => (
+                    <span key={idx} className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs text-gray-300">
+                      {route}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <a href="#booking" className="bg-secondary text-primary px-8 py-3.5 rounded-full font-semibold text-lg hover:bg-secondary/90 transition-all text-center">
-                Book Now &middot; ₹6,999
+              <a href="#routes" className="bg-secondary text-primary px-8 py-3.5 rounded-full font-semibold text-lg hover:bg-secondary/90 transition-all text-center">
+                Book Ride
               </a>
               <a href="https://wa.me/919938136659" target="_blank" rel="noreferrer" className="bg-transparent border border-gray-600 hover:border-secondary text-white px-8 py-3.5 rounded-full font-medium text-lg transition-all flex items-center justify-center space-x-2 group">
                 <span className="group-hover:text-secondary transition-colors"><WhatsAppIcon /></span>
@@ -62,18 +74,18 @@ const Hero = () => {
             <div className="grid grid-cols-3 gap-3 md:gap-4 pt-4 max-w-xl">
               <div className="bg-[#151a25]/80 backdrop-blur-md border border-gray-800 rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:border-gray-600 transition-colors">
                 <Clock className="text-secondary mb-2" size={24} strokeWidth={1.5} />
-                <span className="text-white font-semibold text-sm md:text-base">3D / 2N</span>
-                <span className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider mt-1">Duration</span>
+                <span className="text-white font-semibold text-sm md:text-base">24/7</span>
+                <span className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider mt-1">Available</span>
               </div>
               <div className="bg-[#151a25]/80 backdrop-blur-md border border-gray-800 rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:border-gray-600 transition-colors">
-                <Utensils className="text-secondary mb-2" size={24} strokeWidth={1.5} />
-                <span className="text-white font-semibold text-sm md:text-base">Pure Veg</span>
-                <span className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider mt-1">Cuisine</span>
+                <Car className="text-secondary mb-2" size={24} strokeWidth={1.5} />
+                <span className="text-white font-semibold text-sm md:text-base">Luxury Fleet</span>
+                <span className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider mt-1">SUVs & Sedans</span>
               </div>
               <div className="bg-[#151a25]/80 backdrop-blur-md border border-gray-800 rounded-2xl p-4 flex flex-col items-center justify-center text-center hover:border-gray-600 transition-colors">
-                <Calendar className="text-secondary mb-2" size={24} strokeWidth={1.5} />
-                <span className="text-white font-semibold text-sm md:text-base">Every Friday</span>
-                <span className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider mt-1">Departs</span>
+                <Shield className="text-secondary mb-2" size={24} strokeWidth={1.5} />
+                <span className="text-white font-semibold text-sm md:text-base">Chauffeurs</span>
+                <span className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider mt-1">Safe & Reliable</span>
               </div>
             </div>
           </motion.div>
@@ -101,14 +113,14 @@ const Hero = () => {
                     <Star key={i} size={14} fill="currentColor" />
                   ))}
                 </div>
-                <h4 className="text-white font-bold text-sm">Trusted by Pilgrims</h4>
-                <p className="text-gray-300 text-xs font-light">Small Premium Groups</p>
+                <h4 className="text-white font-bold text-sm">Trusted Services</h4>
+                <p className="text-gray-300 text-xs font-light">Rated 5.0 By Clients</p>
               </div>
 
               {/* Bottom Right Badge */}
               <div className="absolute bottom-12 -right-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-l-2xl rounded-r-lg p-4 shadow-xl pl-6 pr-4 z-20">
-                <h4 className="text-secondary font-playfair font-bold text-2xl tracking-wide">₹6,999</h4>
-                <p className="text-gray-300 text-xs font-light tracking-wider text-right">Per Person</p>
+                <h4 className="text-secondary font-playfair font-bold text-2xl tracking-wide">₹12/km</h4>
+                <p className="text-gray-300 text-xs font-light tracking-wider text-right">Starting Price</p>
               </div>
             </div>
           </motion.div>

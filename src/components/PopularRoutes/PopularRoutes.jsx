@@ -39,6 +39,14 @@ const PopularRoutes = () => {
     { route: 'Bhubaneswar to Cuttack', price: '1600' },
   ];
 
+  const handleBookRoute = (route) => {
+    const message = route.isCustom 
+      ? `Hi Savari Sewa, I want to customise a trip across Odisha. Please assist.`
+      : `Hi Savari Sewa, I want to book the route: *${route.title}* (Price: ₹${route.price}). Please provide availability.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/919938136659?text=${encodedMessage}`, '_blank');
+  };
+
   return (
     <section id="routes" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,120 +78,62 @@ const PopularRoutes = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-bg-light rounded-3xl overflow-hidden border border-gray-100 shadow-lg group hover:shadow-2xl transition-all"
+                className="bg-bg-light rounded-3xl overflow-hidden border border-gray-100 shadow-lg group hover:shadow-2xl transition-all flex flex-col justify-between"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={route.image} 
-                    alt={route.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-montserrat">
-                    {index + 1}
-                  </div>
-                  {!route.isCustom && (
-                    <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-bold shadow-md flex items-center">
-                      <IndianRupee size={14} className="mr-1" />
-                      {route.price}
+                <div>
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={route.image} 
+                      alt={route.title} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 left-4 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold font-montserrat">
+                      {index + 1}
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold text-primary mb-4 font-montserrat min-h-[56px]">
-                    {route.title}
-                  </h3>
-                  
-                  {route.isCustom ? (
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {route.tags.map(tag => (
-                        <span key={tag} className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-between mt-4 border-t border-gray-200 pt-4">
-                      <MapPin size={20} className="text-gray-400" />
-                      <div className="flex-1 border-t-2 border-dashed border-gray-300 mx-2 relative">
-                         <Navigation size={16} className="text-secondary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                    {!route.isCustom && (
+                      <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-primary font-bold shadow-md flex items-center">
+                        <IndianRupee size={14} className="mr-1" />
+                        {route.price}
                       </div>
-                      <MapPin size={20} className="text-gray-400" />
-                    </div>
-                  )}
+                    )}
+                  </div>
+                  <div className="p-6 pb-2">
+                    <h3 className="text-lg font-bold text-primary mb-4 font-montserrat min-h-[56px]">
+                      {route.title}
+                    </h3>
+                    
+                    {route.isCustom ? (
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {route.tags.map(tag => (
+                          <span key={tag} className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-between mt-4 border-t border-gray-200 pt-4">
+                        <MapPin size={20} className="text-gray-400" />
+                        <div className="flex-1 border-t-2 border-dashed border-gray-300 mx-2 relative">
+                           <Navigation size={16} className="text-secondary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                        </div>
+                        <MapPin size={20} className="text-gray-400" />
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => handleBookRoute(route)}
+                    className="w-full bg-secondary hover:bg-secondary/90 text-primary font-bold py-3 px-4 rounded-2xl text-center transition-all mt-4 block text-sm shadow-md hover:shadow-lg"
+                  >
+                    Book Now
+                  </button>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Estimated Rates & Custom Journey Banner */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Estimated Rates Table */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-1 bg-primary rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10 blur-2xl"></div>
-            <h3 className="text-2xl font-bold font-montserrat mb-6 flex items-center">
-              Estimated Rates <span className="text-sm font-normal text-gray-300 ml-2">(With Return)</span>
-            </h3>
-            
-            <div className="space-y-4 relative z-10">
-              {rates.map((rate, i) => (
-                <div key={i} className="flex justify-between items-center border-b border-white/10 pb-4 last:border-0 last:pb-0">
-                  <div className="flex items-center space-x-3">
-                    <MapPin size={16} className="text-secondary flex-shrink-0" />
-                    <span className="text-sm md:text-base font-light">{rate.route}</span>
-                  </div>
-                  <div className="bg-secondary text-primary px-3 py-1 rounded-md font-bold text-sm flex items-center">
-                    <IndianRupee size={14} className="mr-1" />
-                    {rate.price}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-gray-400 mt-6 italic">
-              *Rates are approximate and may vary based on vehicle type & season.
-            </p>
-          </motion.div>
-
-          {/* Custom Journey Banner */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2 bg-gradient-gold rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col justify-center relative overflow-hidden"
-          >
-             <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-20 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-            
-            <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8">
-              <div className="bg-primary p-4 rounded-full text-secondary flex-shrink-0">
-                <MapPin size={48} />
-              </div>
-              <div className="text-center md:text-left">
-                <h3 className="text-3xl font-bold font-montserrat text-primary mb-3">
-                  Customize Your Journey
-                </h3>
-                <p className="text-lg text-primary/80 font-medium mb-6">
-                  We create personalized itineraries across Odisha's most beautiful destinations.
-                </p>
-                <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                  {['Temple', 'Heritage', 'Beach', 'Wildlife', 'Culture'].map(icon => (
-                    <div key={icon} className="flex flex-col items-center">
-                      <div className="w-12 h-12 bg-white/40 rounded-full flex items-center justify-center mb-2">
-                        {/* Placeholder for actual SVGs, using Lucide for now */}
-                        <Navigation size={20} className="text-primary" />
-                      </div>
-                      <span className="text-xs font-bold text-primary">{icon}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
 
       </div>
     </section>
