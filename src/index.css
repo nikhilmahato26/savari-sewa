@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #082A63;
+  --color-secondary: #FDBA12;
+  --color-accent: #FFFFFF;
+  --color-bg-light: #F8F9FB;
+  --color-text-dark: #112240;
+  --color-accent-blue: #0F4C81;
+  --color-highlight-start: #FDB913;
+  --color-highlight-end: #F6C54D;
+  
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light text-text-dark font-poppins;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-extrabold;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-highlight-start to-highlight-end;
+  }
+  .bg-gradient-gold {
+    @apply bg-gradient-to-b from-highlight-start to-highlight-end;
+  }
+}
