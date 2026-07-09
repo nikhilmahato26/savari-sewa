@@ -25,7 +25,7 @@ function App() {
       <TourPackages />
       <WeCare />
       <Statistics />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <BookingProcess />
       <Contact />
       <Footer />
