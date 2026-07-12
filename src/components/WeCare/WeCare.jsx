@@ -42,7 +42,7 @@ const WeCare = () => {
   }
 
   return (
-    <section className="py-24 bg-primary text-white relative overflow-hidden">
+    <section id="we-care" className="py-24 bg-primary text-white relative overflow-hidden">
       {/* Abstract Background pattern */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#FDBA12 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       
