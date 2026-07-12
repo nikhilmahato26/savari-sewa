@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Tag, ShieldCheck, Clock } from 'lucide-react';
-import heroCar from '../../assets/hero-car.png';
 
-// Import local generated images for the slider background
-import puriTemple from '../../assets/puri_temple.png';
-import konarkTemple from '../../assets/konark_temple.png';
-import cuttackBridge from '../../assets/cuttack_bridge.png';
-import airportTransfer from '../../assets/airport_transfer.png';
+// Import local composite poster images
+import posterPuri from '../../assets/poster_puri.png';
+import posterKonark from '../../assets/poster_konark.png';
+import posterCuttack from '../../assets/poster_cuttack.png';
+import posterAirport from '../../assets/poster_airport.png';
 
 // Custom WhatsApp SVG
 const WhatsAppIcon = ({ className }) => (
@@ -23,25 +22,25 @@ const Hero = () => {
   const slides = [
     {
       id: 0,
-      image: puriTemple,
+      bgImage: posterPuri,
       tagline: "Clean Cars. Professional Drivers. On-time Service.",
       routeText: "Puri"
     },
     {
       id: 1,
-      image: konarkTemple,
+      bgImage: posterKonark,
       tagline: "Explore the Sun Temple & Golden Beaches with local experts.",
       routeText: "Konark"
     },
     {
       id: 2,
-      image: cuttackBridge,
+      bgImage: posterCuttack,
       tagline: "Smooth intercity commutes and reliable business trips.",
       routeText: "Cuttack"
     },
     {
       id: 3,
-      image: airportTransfer,
+      bgImage: posterAirport,
       tagline: "Hassle-free 24/7 airport pickups and drops guaranteed.",
       routeText: "Airport"
     }
@@ -51,7 +50,7 @@ const Hero = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4500);
+    }, 5000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
@@ -72,31 +71,34 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Container Card */}
-        <div className="bg-[#05132D] rounded-b-[40px] md:rounded-b-[50px] relative overflow-hidden shadow-2xl px-6 py-12 md:p-16 lg:py-20 lg:px-20 text-white min-h-[500px] lg:min-h-[580px] flex items-center">
+        <div className="bg-[#05132D] rounded-b-[40px] md:rounded-b-[50px] relative overflow-hidden shadow-2xl min-h-[500px] lg:min-h-[580px] text-white flex items-center">
           
-          {/* Animated Background Slider Image Layer */}
+          {/* Background Poster Slider */}
           <div className="absolute inset-0 z-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 0.25, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.9, ease: "easeInOut" }}
-                style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                style={{ backgroundImage: `url(${slides[currentSlide].bgImage})` }}
                 className="absolute inset-0 bg-cover bg-center"
-              />
+              >
+                {/* Left-aligned dark overlay that gradually fades to transparent on the right */}
+                <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-[#05132D] via-[#05132D]/95 via-[#05132D]/80 to-transparent z-10 pointer-events-none"></div>
+                {/* Overall ambient darkening overlay to ensure text contrast */}
+                <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none"></div>
+              </motion.div>
             </AnimatePresence>
-            
-            {/* Deep color gradients overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#05132D] via-[#05132D]/95 to-[#040E22]/90"></div>
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none"></div>
           </div>
           
-          <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Content overlay */}
+          <div className="relative z-20 w-full px-6 py-12 md:px-16 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Column: Headings & Buttons */}
-            <div className="lg:col-span-7 space-y-6 md:space-y-8 text-left">
+            {/* Left Column: Headings, taglines & buttons */}
+            <div className="lg:col-span-8 space-y-6 md:space-y-8 text-left">
               <div className="space-y-4">
                 <motion.h1 
                   initial={{ opacity: 0, y: 15 }}
@@ -131,7 +133,6 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex flex-wrap gap-4"
               >
-                {/* Inquiry button */}
                 <button
                   onClick={handleInquiry}
                   className="flex items-center space-x-2 border-2 border-[#FDBA12] text-[#FDBA12] hover:bg-[#FDBA12]/10 transition-all px-5 py-3 rounded-xl font-bold text-sm"
@@ -140,7 +141,6 @@ const Hero = () => {
                   <span>Inquiry</span>
                 </button>
 
-                {/* WhatsApp booking button */}
                 <button
                   onClick={handleBookNow}
                   className="flex items-center space-x-2 bg-transparent border-2 border-white text-white hover:bg-white/10 transition-all px-5 py-3 rounded-xl font-bold text-sm"
@@ -150,25 +150,9 @@ const Hero = () => {
                 </button>
               </motion.div>
             </div>
-
-            {/* Right Column: White Toyota Innova Crysta Image (stays fixed in foreground) */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="w-full max-w-[450px] lg:max-w-none drop-shadow-[0_20px_35px_rgba(0,0,0,0.45)]"
-              >
-                <img 
-                  src={heroCar} 
-                  alt="White Innova Crysta" 
-                  className="w-full h-auto object-contain select-none"
-                  onError={(e) => {
-                    e.target.src = "https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=800";
-                  }}
-                />
-              </motion.div>
-            </div>
+            
+            {/* Empty Right Column as space is preserved for the car already in the poster background */}
+            <div className="lg:col-span-4 hidden lg:block"></div>
           </div>
 
           {/* Bottom Dot Slider Navigation */}
