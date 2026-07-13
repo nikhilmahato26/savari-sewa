@@ -68,31 +68,25 @@ const Navbar = () => {
             onClick={() => handleNavClick('routes')} 
             className="text-left text-[#082A63] font-bold hover:text-[#FDBA12] py-2 border-b border-gray-50"
           >
-            Popular Routes
+            Routes
           </button>
           <button 
             onClick={() => handleNavClick('services')} 
             className="text-left text-[#082A63] font-bold hover:text-[#FDBA12] py-2 border-b border-gray-50"
           >
-            Our Services
+            Services
           </button>
           <button 
             onClick={() => handleNavClick('strengths')} 
             className="text-left text-[#082A63] font-bold hover:text-[#FDBA12] py-2 border-b border-gray-50"
           >
-            Our Strengths
-          </button>
-          <button 
-            onClick={() => handleNavClick('we-care')} 
-            className="text-left text-[#082A63] font-bold hover:text-[#FDBA12] py-2 border-b border-gray-50"
-          >
-            We Care Like Family
+            Strengths
           </button>
           <button 
             onClick={() => handleNavClick('contact')} 
             className="text-left text-[#082A63] font-bold hover:text-[#FDBA12] py-2"
           >
-            Get In Touch
+            Contact
           </button>
         </div>
       )}

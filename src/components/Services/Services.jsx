@@ -133,11 +133,10 @@ const Services = () => {
                   <div className="flex-shrink-0">
                     <button
                       onClick={() => handleBookService(service.title)}
-                      className="bg-[#05132D] hover:bg-[#0A224A] text-white font-bold py-3.5 px-6 rounded-2xl flex items-center space-x-2 transition-all text-xs md:text-sm active:scale-95 shadow-sm"
+                      className="bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-xl flex items-center space-x-2 transition-all text-xs md:text-sm active:scale-95 shadow-sm"
                     >
                       <WhatsAppIcon className="text-white" />
                       <span>Book on WhatsApp</span>
-                      <span className="font-light text-white/50 text-[10px] pl-1 font-mono">&gt;</span>
                     </button>
                   </div>
                 </div>

@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Tag, ShieldCheck, Clock } from 'lucide-react';
-
-// Import local composite poster images
-import posterPuri from '../../assets/poster_puri.png';
-import posterKonark from '../../assets/poster_konark.png';
-import posterCuttack from '../../assets/poster_cuttack.png';
-import posterAirport from '../../assets/poster_airport.png';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Tag, Clock } from 'lucide-react';
 
 // Custom WhatsApp SVG
 const WhatsAppIcon = ({ className }) => (
@@ -17,52 +11,15 @@ const WhatsAppIcon = ({ className }) => (
 
 const Hero = () => {
   const whatsappNumber = "918280090216";
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      id: 0,
-      bgImage: posterPuri,
-      tagline: "Clean Cars. Professional Drivers. On-time Service.",
-      routeText: "Puri"
-    },
-    {
-      id: 1,
-      bgImage: posterKonark,
-      tagline: "Explore the Sun Temple & Golden Beaches with local experts.",
-      routeText: "Konark"
-    },
-    {
-      id: 2,
-      bgImage: posterCuttack,
-      tagline: "Smooth intercity commutes and reliable business trips.",
-      routeText: "Cuttack"
-    },
-    {
-      id: 3,
-      bgImage: posterAirport,
-      tagline: "Hassle-free 24/7 airport pickups and drops guaranteed.",
-      routeText: "Airport"
-    }
-  ];
-
-  // Autoplay Slider
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
+  const bgImage = "https://res.cloudinary.com/dynbpb9u0/image/upload/v1783924499/ChatGPT_Image_Jul_13_2026_12_03_59_PM_f0safz.png";
 
   const handleInquiry = () => {
-    const slide = slides[currentSlide];
-    const text = encodeURIComponent(`Hi Savari Sewa, I want to make an inquiry for booking a cab for the ${slide.routeText} route/trip.`);
+    const text = encodeURIComponent(`Hi Savari Sewa, I want to make an inquiry for booking a cab.`);
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   };
 
   const handleBookNow = () => {
-    const slide = slides[currentSlide];
-    const text = encodeURIComponent(`Hi Savari Sewa, I want to book a cab for the ${slide.routeText} trip. Please check availability.`);
+    const text = encodeURIComponent(`Hi Savari Sewa, I want to book a cab. Please check availability.`);
     window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   };
 
@@ -71,58 +28,49 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Container Card */}
-        <div className="bg-[#05132D] rounded-b-[40px] md:rounded-b-[50px] relative overflow-hidden shadow-2xl min-h-[500px] lg:min-h-[580px] text-white flex items-center">
+        <div className="bg-[#05132D] rounded-b-[30px] md:rounded-b-[50px] relative overflow-hidden shadow-2xl w-full aspect-video text-white flex items-center">
           
-          {/* Background Poster Slider */}
+          {/* Background Poster Static Image */}
           <div className="absolute inset-0 z-0">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                style={{ backgroundImage: `url(${slides[currentSlide].bgImage})` }}
-                className="absolute inset-0 bg-cover bg-center"
-              >
-                {/* Left-aligned dark overlay that gradually fades to transparent on the right */}
-                <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-[#05132D] via-[#05132D]/95 via-[#05132D]/80 to-transparent z-10 pointer-events-none"></div>
-                {/* Overall ambient darkening overlay to ensure text contrast */}
-                <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none"></div>
-              </motion.div>
-            </AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              style={{ backgroundImage: `url(${bgImage})` }}
+              className="absolute inset-0 bg-cover bg-center"
+            >
+              {/* Left-aligned dark overlay that gradually fades to transparent on the right */}
+              <div className="absolute inset-y-0 left-0 w-full lg:w-2/3 bg-gradient-to-r from-[#05132D] via-[#05132D]/95 via-[#05132D]/80 to-transparent z-10 pointer-events-none"></div>
+              {/* Overall ambient darkening overlay to ensure text contrast */}
+              <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none"></div>
+            </motion.div>
             <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none"></div>
           </div>
           
           {/* Content overlay */}
-          <div className="relative z-20 w-full px-6 py-12 md:px-16 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="relative z-20 w-full px-4 py-4 sm:px-6 sm:py-8 md:px-16 md:py-12 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-center">
             
             {/* Left Column: Headings, taglines & buttons */}
-            <div className="lg:col-span-8 space-y-6 md:space-y-8 text-left">
-              <div className="space-y-4">
+            <div className="lg:col-span-8 space-y-2 sm:space-y-4 md:space-y-8 text-left">
+              <div className="space-y-1 sm:space-y-2 md:space-y-4">
                 <motion.h1 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-4xl md:text-5xl lg:text-[54px] font-montserrat font-extrabold leading-tight text-white"
+                  className="text-xl sm:text-3xl md:text-5xl lg:text-[54px] font-montserrat font-extrabold leading-tight text-white"
                 >
                   Premium Cab Service<br/>Across <span className="text-[#FDBA12]">Odisha</span>
                 </motion.h1>
                 
-                {/* Dynamically changing tagline per slide */}
-                <div className="min-h-[48px]">
-                  <AnimatePresence mode="wait">
-                    <motion.p 
-                      key={currentSlide}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-gray-300 font-medium text-sm md:text-base tracking-wide max-w-lg leading-relaxed"
-                    >
-                      {slides[currentSlide].tagline}
-                    </motion.p>
-                  </AnimatePresence>
+                <div className="min-h-[24px] md:min-h-[48px]">
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-gray-300 font-medium text-[10px] sm:text-xs md:text-base tracking-wide max-w-lg leading-relaxed md:leading-relaxed"
+                  >
+                    Clean Cars. Professional Drivers. On-time Service.
+                  </motion.p>
                 </div>
               </div>
 
@@ -131,21 +79,21 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-wrap gap-4"
+                className="flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0"
               >
                 <button
                   onClick={handleInquiry}
-                  className="flex items-center space-x-2 border-2 border-[#FDBA12] text-[#FDBA12] hover:bg-[#FDBA12]/10 transition-all px-5 py-3 rounded-xl font-bold text-sm"
+                  className="flex items-center space-x-1.5 md:space-x-2 border-2 border-[#FDBA12] text-[#FDBA12] hover:bg-[#FDBA12]/10 transition-all px-3 py-1.5 md:px-5 md:py-3 rounded-lg md:rounded-xl font-bold text-[10px] md:text-sm"
                 >
-                  <Calendar size={18} />
+                  <Calendar size={14} className="md:w-[18px] md:h-[18px]" />
                   <span>Inquiry</span>
                 </button>
 
                 <button
                   onClick={handleBookNow}
-                  className="flex items-center space-x-2 bg-transparent border-2 border-white text-white hover:bg-white/10 transition-all px-5 py-3 rounded-xl font-bold text-sm"
+                  className="flex items-center space-x-1.5 md:space-x-2 bg-transparent border-2 border-white text-white hover:bg-white/10 transition-all px-3 py-1.5 md:px-5 md:py-3 rounded-lg md:rounded-xl font-bold text-[10px] md:text-sm"
                 >
-                  <WhatsAppIcon className="text-white" />
+                  <WhatsAppIcon className="text-white scale-75 origin-left md:scale-100" />
                   <span>WhatsApp for Booking</span>
                 </button>
               </motion.div>
@@ -154,28 +102,13 @@ const Hero = () => {
             {/* Empty Right Column as space is preserved for the car already in the poster background */}
             <div className="lg:col-span-4 hidden lg:block"></div>
           </div>
-
-          {/* Bottom Dot Slider Navigation */}
-          <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2.5 z-20">
-            {slides.map((slide) => (
-              <button
-                key={slide.id}
-                onClick={() => setCurrentSlide(slide.id)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  currentSlide === slide.id ? 'bg-[#FDBA12] scale-110' : 'bg-white/40 hover:bg-white/70'
-                }`}
-                aria-label={`Go to slide ${slide.id + 1}`}
-              />
-            ))}
-          </div>
-
         </div>
       </div>
 
       {/* Features Card Overlapping Section */}
       <div className="max-w-6xl mx-auto px-4 -mt-10 relative z-20">
         <div className="bg-white rounded-[24px] border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {/* Feature 1 */}
             <div className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
               <div className="bg-amber-50 p-3.5 rounded-full flex items-center justify-center">
@@ -191,22 +124,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Feature 2 */}
-            <div className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
-              <div className="bg-emerald-50 p-3.5 rounded-full flex items-center justify-center">
-                <ShieldCheck size={26} className="text-emerald-500" />
-              </div>
-              <div className="space-y-1">
-                <h3 className="text-base font-extrabold text-[#082A63] font-montserrat">
-                  Drivers Verified
-                </h3>
-                <p className="text-xs text-gray-500 font-medium">
-                  Background verified & experienced drivers
-                </p>
-              </div>
-            </div>
-
-            {/* Feature 3 */}
+            {/* Feature 2 (was Feature 3) */}
             <div className="p-6 md:p-8 flex flex-col items-center text-center space-y-4">
               <div className="bg-sky-50 p-3.5 rounded-full flex items-center justify-center">
                 <Clock size={26} className="text-sky-500" />

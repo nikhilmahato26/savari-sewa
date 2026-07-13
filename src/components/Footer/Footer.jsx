@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#051a3f] text-white pt-16 pb-8 border-t-4 border-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 mb-12">
           {/* Brand */}
           <div>
             <a href="#" className="flex flex-col mb-6">
@@ -32,29 +32,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-bold font-montserrat mb-6 text-white">Quick Links</h4>
-            <ul className="space-y-3">
-              <li><a href="#services" className="text-gray-400 hover:text-secondary transition-colors text-sm">Our Services</a></li>
-              <li><a href="#routes" className="text-gray-400 hover:text-secondary transition-colors text-sm">Popular Routes</a></li>
-              <li><a href="#fleet" className="text-gray-400 hover:text-secondary transition-colors text-sm">Our Fleet</a></li>
-              <li><a href="#packages" className="text-gray-400 hover:text-secondary transition-colors text-sm">Tour Packages</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-secondary transition-colors text-sm">Contact Us</a></li>
-            </ul>
-          </div>
-
-          {/* Popular Tours */}
-          <div>
-            <h4 className="text-lg font-bold font-montserrat mb-6 text-white">Odisha Tours</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-gray-400 hover:text-secondary transition-colors text-sm">Temple Tours</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-secondary transition-colors text-sm">Beach Tours</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-secondary transition-colors text-sm">Wildlife Safari</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-secondary transition-colors text-sm">Heritage Walk</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-secondary transition-colors text-sm">Customised Trip</a></li>
-            </ul>
-          </div>
 
           {/* Contact Details */}
           <div>
