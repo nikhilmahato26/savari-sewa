@@ -106,7 +106,7 @@ const Hero = () => {
       </div>
 
       {/* Features Card Overlapping Section */}
-      <div className="max-w-6xl mx-auto px-4 -mt-10 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 -mt-8 relative z-20">
         <div className="bg-white rounded-[24px] border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-100">
             {/* Feature 1 */}
